@@ -1,34 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { ThemeProvider } from './components/providers/theme-provider';
+import { Button } from './components/ui/button';
+import { ModeToggle } from './components/ui/theme-toggle';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="flex flex-col gap-10 items-center justify-center min-h-screen text-center">
+        <h1 className="text-5xl">Welcome to Shadcn + Vite</h1>
+
+        <div className="flex gap-2">
+          <ModeToggle/>
+          <Button variant={'default'}>Default</Button>
+          <Button variant={'secondary'}>Secondary</Button>
+          <Button variant={'destructive'}>Destructive</Button>
+          <Button variant={'outline'}>Outline</Button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
